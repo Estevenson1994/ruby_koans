@@ -14,13 +14,11 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if (a == b) && (b == c)
-    :equilateral
-  elsif (a != b) && (b != c) && (a != c)
-    :scalene
-  else
-    :isosceles
-  end
+  fail TriangleError, "Illegal triangle: [#{a}, #{b}, #{c}]" if
+    [a, b, c].max >= (a + b + c) / 2.0
+   return :equilateral if a == b && b == c
+   return :scalene if (a != b) && (b != c) && (a != c)
+   return :isosceles
 end
 
 # Error class used in part 2.  No need to change this code.
